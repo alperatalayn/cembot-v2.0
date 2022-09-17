@@ -15,14 +15,14 @@ module.exports = {
     ],
 
 
-    async execute({ inter, client }) {
-        const queue = player.getQueue(inter.guildId);
+    async execute({ message, client }) {
+        const queue = player.getQueue(message.guildId);
 
-        if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.playing) return message.reply({ content: `No music currently playing ${message.member}... try again ? ❌`, ephemeral: true });
 
         const actualFilter = queue.getFiltersEnabled()[0];
 
-        const infilter = inter.options.getString('filter');
+        const infilter = message.content.substring(message.content.indexOf(' ') + 1);
 
 
         const filters = [];
@@ -32,7 +32,7 @@ module.exports = {
 
         const filter = filters.find((x) => x.toLowerCase() === infilter.toLowerCase());
 
-        if (!filter) return inter.reply({ content: `This filter doesn't exist ${inter.member}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `**${x}**`).join(', ')}.`, ephemeral: true });
+        if (!filter) return message.reply({ content: `This filter doesn't exist ${message.member}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `**${x}**`).join(', ')}.`, ephemeral: true });
 
         const filtersUpdated = {};
 
@@ -40,6 +40,6 @@ module.exports = {
 
         await queue.setFilters(filtersUpdated);
 
-        inter.reply({ content: `The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*` });
+        message.reply({ content: `The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*` });
     },
 };

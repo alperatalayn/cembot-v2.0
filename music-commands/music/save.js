@@ -5,12 +5,12 @@ module.exports = {
     description: 'save the current track!',
     voiceChannel: true,
 
-    async execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+    async execute({ message }) {
+        const queue = player.getQueue(message.guildId);
 
-        if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return message.reply({ content: `No music currently playing ${message.member}... try again ? ❌`, ephemeral: true });
 
-        inter.member.send({
+        message.member.send({
             embeds: [
                 new EmbedBuilder()
                     .setColor('Red')
@@ -23,12 +23,12 @@ module.exports = {
                         { name: 'Song URL:', value: `\`${queue.current.url}\`` }
                     )
                     .setThumbnail(queue.current.thumbnail)
-                    .setFooter({text:`from the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
+                    .setFooter({text:`from the server ${message.member.guild.name}`, iconURL: message.member.guild.iconURL({ dynamic: false })})
             ]
         }).then(() => {
-            return inter.reply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
+            return message.reply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
         }).catch(error => {
-            return inter.reply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
+            return message.reply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
         });
     },
 };

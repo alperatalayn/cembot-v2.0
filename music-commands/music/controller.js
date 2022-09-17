@@ -13,19 +13,19 @@ module.exports = {
             required: true,
         }
     ],
-    async execute({ inter, client }) { 
-      let Channel = inter.options.getChannel('channel');
-      if (Channel.type !== 0) return inter.reply({ content: `you have to send it to a text channel.. ❌`, ephemeral: true})
+    async execute({ message, client }) { 
+      let Channel = message.channel;
+      if (Channel.type !== 0) return message.reply({ content: `you have to send it to a text channel.. ❌`, ephemeral: true})
 
     
       const embed = new EmbedBuilder()
        .setTitle('control your music from the buttons below')
-       .setImage(inter.guild.iconURL({ size: 4096, dynamic: true }))
+       .setImage(message.guild.iconURL({ size: 4096, dynamic: true }))
        .setColor('#36393e')
-       .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
+       .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: message.member.avatarURL({ dynamic: true })})
 
 
-         inter.reply({ content: `sending controller to ${Channel}... ✅`, ephemeral: true})
+         message.reply({ content: `sending controller to ${Channel}... ✅`, ephemeral: true})
 
          const back = new ButtonBuilder()
          .setLabel('Back')

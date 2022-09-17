@@ -1,9 +1,9 @@
 module.exports = {
     app: {
-        token: 'XXX',
-        playing: 'by Zerio ❤️',
-        global: true,
-        guild: 'XXX'
+        token: 'ODgwNTU0NjQ2OTAzNjExNDEz.GUpGuy.DA0Zt2MYnzaPnieG4OmP1apgqMeYrE6JOXFP4I',
+        playing: 'cembot',
+        global: false,
+        guild: '541425378854436864'
     },
 
     opt: {
@@ -22,6 +22,7 @@ module.exports = {
                 quality: 'highestaudio',
                 highWaterMark: 1 << 25
             }
-        }
+        },
+        prefix: '*'
     }
 };
