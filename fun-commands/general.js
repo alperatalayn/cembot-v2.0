@@ -5,6 +5,10 @@ module.exports = {
             value: "Aleykümselam"
         },
         {
+            name: "test",
+            value: "deneme"
+        },
+        {
             name: "asım",
             value: "Salakasım"
         },

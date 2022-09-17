@@ -8,7 +8,7 @@ module.exports = {
     async execute({ message }) {
         const queue = player.getQueue(message.guildId);
 
-        if (!queue) return message.reply({ content: `No music currently playing ${message.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return message.reply({ content: `Paşam şarkı yok`, ephemeral: true });
 
         message.member.send({
             embeds: [
@@ -17,18 +17,18 @@ module.exports = {
                     .setTitle(`:arrow_forward: ${queue.current.title}`)
                     .setURL(queue.current.url)
                     .addFields(
-                        { name: ':hourglass: Duration:', value: `\`${queue.current.duration}\``, inline: true },
-                        { name: 'Song by:', value: `\`${queue.current.author}\``, inline: true },
-                        { name: 'Views :eyes:', value: `\`${Number(queue.current.views).toLocaleString()}\``, inline: true },
-                        { name: 'Song URL:', value: `\`${queue.current.url}\`` }
+                        { name: ':hourglass: Süre:', value: `\`${queue.current.duration}\``, inline: true },
+                        { name: 'Eserin sahibi:', value: `\`${queue.current.author}\``, inline: true },
+                        { name: 'Görüntülenme :eyes:', value: `\`${Number(queue.current.views).toLocaleString()}\``, inline: true },
+                        { name: 'Bağlantı:', value: `\`${queue.current.url}\`` }
                     )
                     .setThumbnail(queue.current.thumbnail)
-                    .setFooter({text:`from the server ${message.member.guild.name}`, iconURL: message.member.guild.iconURL({ dynamic: false })})
+                    .setFooter({text:`${message.member.guild.name}'den geldim. Bunu sana gönderdiler.`, iconURL: message.member.guild.iconURL({ dynamic: false })})
             ]
         }).then(() => {
-            return message.reply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
+            return message.reply({ content: `Dm bak güzellik ✅`, ephemeral: true });
         }).catch(error => {
-            return message.reply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
+            return message.reply({ content: `Sana giden yolları yezid kapatmış`, ephemeral: true });
         });
     },
 };

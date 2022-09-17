@@ -16,7 +16,8 @@ client.config = require('./config');
 
 global.player = new Player(client, client.config.opt.discordPlayer);
 
+var DBConnection = require('./mongo/DBConnection');
+var db = DBConnection.Get();
 require('./src/loader');
 require('./src/events');
-
 client.login(client.config.app.token);

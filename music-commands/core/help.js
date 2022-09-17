@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    name: 'help',
+    name: 'hızır',
     description: "All the commands this bot has!",
     showHelp: false,
 
@@ -11,8 +11,8 @@ module.exports = {
         const embed = new EmbedBuilder()
         .setColor('#ff0000')
         .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
-        .setDescription('Cembot.')
-        .addFields([ { name: `Enabled - ${commands.size}`, value: commands.map(x => `\`${x.name}\``).join(' | ') } ])
+        .setDescription('Komut verirken dikkatli olalım, botuz diye ezilecek değiliz.')
+        .addFields([ { name: `Emriniz - ${commands.size}`, value: commands.map(x => `\`${x.name}\``).join(' | ') } ])
         .setTimestamp()
         .setFooter({ text: 'Cembot.', iconURL: message.member.avatarURL({ dynamic: true })});
 

@@ -19,13 +19,13 @@ module.exports = {
     execute({ message }) {
         const queue = player.getQueue(message.guildId);
 
-        if (!queue) return message.reply({ content: `No music currently playing ${message.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return message.reply({ content: `Paşam şarkı yok`, ephemeral: true });
         const vol = parseInt(message.content.substring(message.content.indexOf(' ') + 1))
 
-        if (queue.volume === vol) return message.reply({ content: `The volume you want to change is already the current one ${message.member}... try again ? ❌`, ephemeral: true });
+        if (queue.volume === vol) return message.reply({ content: `Olduğum yerdeyim.`, ephemeral: true });
 
         const success = queue.setVolume(vol);
 
-        return message.reply({ content:success ? `The volume has been modified to **${vol}**/**${maxVol}**% 🔊` : `Something went wrong ${message.member}... try again ? ❌`});
+        return message.reply({ content:success ? `Ses seviyesi: **${vol}**/**${maxVol}**% 🔊` : `Bişey oldu`});
     },
 };

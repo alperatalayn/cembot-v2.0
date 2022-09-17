@@ -8,7 +8,7 @@ module.exports = {
     execute({ message }) {
         const queue = player.getQueue(message.guildId);
 
-        if (!queue) return message.reply({ content: `No music currently playing ${message.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return message.reply({ content: `Paşam liste yok`, ephemeral: true });
 
         const track = queue.current;
 
@@ -24,33 +24,33 @@ module.exports = {
         const embed = new EmbedBuilder()
         .setAuthor({ name: track.title,  iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })})
         .setThumbnail(track.thumbnail)
-        .setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nProgress ${progress}\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`)
-        .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: message.member.avatarURL({ dynamic: true })})
+        .setDescription(`Ses seviyesi **${queue.volume}**%\nSüre **${trackDuration}**\nİlerleme ${progress}\nDönüyor muyum? **${methods[queue.repeatMode]}**\n ${track.requestedBy} istedi`)
+        .setFooter({ text: 'Alinin yoluna serim veririm', iconURL: message.member.avatarURL({ dynamic: true })})
         .setColor('ff0000')
         .setTimestamp()
 
         const saveButton = new ButtonBuilder()
-        .setLabel('Save this track')
+        .setLabel('Kaydet')
         .setCustomId(JSON.stringify({ffb: 'savetrack'}))
         .setStyle('Danger')
 
         const volumeup = new ButtonBuilder()
-        .setLabel('Volume up')
+        .setLabel('Ses aç')
         .setCustomId(JSON.stringify({ffb: 'volumeup'}))
         .setStyle('Primary')
 
         const volumedown = new ButtonBuilder()
-        .setLabel('Volume Down')
+        .setLabel('Ses kıs')
         .setCustomId(JSON.stringify({ffb: 'volumedown'}))
         .setStyle('Primary')
 
         const loop = new ButtonBuilder()
-        .setLabel('Loop')
+        .setLabel('Dön')
         .setCustomId(JSON.stringify({ffb: 'loop'}))
         .setStyle('Danger')
 
         const resumepause = new ButtonBuilder()
-         .setLabel('Resume & Pause')
+         .setLabel('Devam et & Dur')
          .setCustomId(JSON.stringify({ffb: 'resume&pause'}))
          .setStyle('Success')
 

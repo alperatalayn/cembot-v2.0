@@ -15,60 +15,57 @@ module.exports = {
     ],
     async execute({ message, client }) { 
       let Channel = message.channel;
-      if (Channel.type !== 0) return message.reply({ content: `you have to send it to a text channel.. ❌`, ephemeral: true})
+      if (Channel.type !== 0) return message.reply({ content: `Söz uçar yazı kalır`, ephemeral: true})
 
     
       const embed = new EmbedBuilder()
-       .setTitle('control your music from the buttons below')
+       .setTitle('Hızır yardımcınız olsun')
        .setImage(message.guild.iconURL({ size: 4096, dynamic: true }))
        .setColor('#36393e')
-       .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: message.member.avatarURL({ dynamic: true })})
-
-
-         message.reply({ content: `sending controller to ${Channel}... ✅`, ephemeral: true})
+       .setFooter({ text: 'la feta illa ali la seyfe illa zülfikar', iconURL: message.member.avatarURL({ dynamic: true })})
 
          const back = new ButtonBuilder()
-         .setLabel('Back')
+         .setLabel('Geri')
          .setCustomId(JSON.stringify({ffb: 'back'}))
          .setStyle('Primary')
 
          const skip = new ButtonBuilder()
-         .setLabel('Skip')
+         .setLabel('İleri')
          .setCustomId(JSON.stringify({ffb: 'skip'}))
          .setStyle('Primary')
 
          const resumepause = new ButtonBuilder()
-         .setLabel('Resume & Pause')
+         .setLabel('Devam Et & Dur')
          .setCustomId(JSON.stringify({ffb: 'resume&pause'}))
          .setStyle('Danger')
 
          const save = new ButtonBuilder()
-         .setLabel('Save')
+         .setLabel('Kaydet')
          .setCustomId(JSON.stringify({ffb: 'savetrack'}))
          .setStyle('Success')
 
          const volumeup = new ButtonBuilder()
-         .setLabel('Volume up')
+         .setLabel('Ses aç')
          .setCustomId(JSON.stringify({ffb: 'volumeup'}))
          .setStyle('Primary')
 
          const volumedown = new ButtonBuilder()
-         .setLabel('Volume Down')
+         .setLabel('Ses kıs')
          .setCustomId(JSON.stringify({ffb: 'volumedown'}))
          .setStyle('Primary')
 
          const loop = new ButtonBuilder()
-         .setLabel('Loop')
+         .setLabel('Dön')
          .setCustomId(JSON.stringify({ffb: 'loop'}))
          .setStyle('Danger')
 
          const np = new ButtonBuilder()
-         .setLabel('Now Playing')
+         .setLabel('Şimdi Çalıyor..')
          .setCustomId(JSON.stringify({ffb: 'nowplaying'}))
          .setStyle('Secondary')
          
          const queuebutton = new ButtonBuilder()
-         .setLabel('Queue')
+         .setLabel('Liste')
          .setCustomId(JSON.stringify({ffb: 'queue'}))
          .setStyle('Secondary')
 

@@ -16,14 +16,14 @@ module.exports = {
     async execute({ message }) {
         const queue = player.getQueue(message.guildId);
 
-        if (!queue || !queue.playing) return message.reply({ content: `No music currently playing ${message.reply}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.playing) return message.reply({ content: `Paşam şarkı yok`, ephemeral: true });
 
         const timeToMS = ms(message.content.substring(message.content.indexOf(' ') + 1));
 
-        if (timeToMS >= queue.current.durationMS) return message.reply({ content:`The indicated time is higher than the total time of the current song ${message.member}... try again ? ❌\n*Try for example a valid time like **5s, 10s, 20 seconds, 1m**...*`, ephemeral: true });
+        if (timeToMS >= queue.current.durationMS) return message.reply({ content:`Baban görmüş bu uzunlukta müzik ? ❌\n*Adam gibi süre gir. Örneğin: **5s, 10s, 20 seconds, 1m**...*`, ephemeral: true });
 
         await queue.seek(timeToMS);
 
-        message.reply({ content: `Time set on the current song **${ms(timeToMS, { long: true })}** ✅`});
+        message.reply({ content: `Bi anda atladım şuraya: **${ms(timeToMS, { long: true })}** ✅`});
     },
 };

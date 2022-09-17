@@ -20,7 +20,7 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
 
-        if (!res || !res.tracks.length) return message.reply({ content: `No results found ${message.member}... try again ? ❌`, ephemeral: true });
+        if (!res || !res.tracks.length) return message.reply({ content: `Aza kanaat etmeyen çoğu bulamaz`, ephemeral: true });
 
         const queue = await player.createQueue(message.guild, {
             metadata: message.channel,
@@ -33,10 +33,10 @@ module.exports = {
             if (!queue.connection) await queue.connect(message.member.voice.channel);
         } catch {
             await player.deleteQueue(message.guildId);
-            return message.reply({ content: `I can't join the voice channel ${message.member}... try again ? ❌`, ephemeral: true});
+            return message.reply({ content: `Bir yudum su aramıştım`, ephemeral: true});
         }
 
-       await message.reply({ content:`Loading your ${res.playlist ? 'playlist' : 'track'}... 🎧`});
+       await message.reply({ content:`Senin ${res.playlist ? 'listeyi' : 'şarkıyı'} dizdim 🎧`});
 
         res.playlist ? queue.addTracks(res.tracks) : queue.addTrack(res.tracks[0]);
 

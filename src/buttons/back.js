@@ -1,9 +1,9 @@
 module.exports = async ({  inter, queue }) => { 
-    if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.playing) return inter.reply({ content: `Paşam şarkı yok`, ephemeral: true });
 
-    if (!queue.previousTracks[1]) return inter.reply({ content: `There was no music played before ${inter.member}... try again ? ❌`, ephemeral: true });
+    if (!queue.previousTracks[1]) return inter.reply({ content: `Bizim listede aksayan bir taraf var. Mesela ben bundan önce şarkı olduğuna inanmıyorum. \n Beni burda tutan şey şarkı çalmak vecdi mi? Sanmıyorum... `, ephemeral: true });
 
     await queue.back();
 
-    inter.reply({ content:`Playing the **previous** track ✅`, ephemeral: true});
+    inter.reply({ content:`Çaldım çalacağın bütün şarkıları`, ephemeral: true});
 }

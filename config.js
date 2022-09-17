@@ -24,5 +24,8 @@ module.exports = {
             }
         },
         prefix: '*'
+    },
+    mongo:{
+        url:"mongodb+srv://cembot-admin:5Q86Tejzs8JCDdK1@cembot-v2.b8xjiod.mongodb.net/?retryWrites=true&w=majority"
     }
 };

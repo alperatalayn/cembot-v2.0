@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require('discord.js');
 module.exports = async ({ client, inter, queue }) => { 
-    if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.playing) return inter.reply({ content: `Paşam şarkı yok.`, ephemeral: true });
 
     const track = queue.current;
 
@@ -16,8 +16,8 @@ module.exports = async ({ client, inter, queue }) => {
     const embed = new EmbedBuilder()
     .setAuthor({ name: track.title,  iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })})
     .setThumbnail(track.thumbnail)
-    .setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nProgress ${progress}\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`)
-    .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
+    .setDescription(`Ses seviyesi: **${queue.volume}**%\nSüre: **${trackDuration}**\nİlerleme: ${progress}\nDönme modu: **${methods[queue.repeatMode]}**\n${track.requestedBy} istedi`)
+    .setFooter({ text: 'Aslını inkar eden haramzadedir!', iconURL: inter.member.avatarURL({ dynamic: true })})
     .setColor('ff0000')
     .setTimestamp()
 

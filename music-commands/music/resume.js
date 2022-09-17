@@ -6,14 +6,14 @@ module.exports = {
     execute({ message }) {
         const queue = player.getQueue(message.guildId);
 
-        if (!queue) return message.reply({ content: `No music currently playing ${message.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return message.reply({ content: `Paşam liste yok`, ephemeral: true });
         var success = null;
         if(queue.connection.paused){
             success = queue.setPaused(false);
-            return message.reply({content: 'The track is already running!', ephemeral: true})
+            return message.reply({content: 'Durmadan devam edersem söz olur.', ephemeral: true})
         } 
 
         
-        return message.reply({ content:success ? `Current music ${queue.current.title} resumed ✅` : `Something went wrong ${message.member}... try again ? ❌`});
+        return message.reply({ content:success ? `${queue.current.title} kısa bir aranın ardından devam ediyor ✅` : `Bazen robotlar bile hata yapar, önemli olan aynı çukura birdaha düşmemek`});
     },
 };

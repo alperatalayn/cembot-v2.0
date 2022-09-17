@@ -1,6 +1,6 @@
 const { readdirSync } = require('fs');
 const { Collection, EmbedBuilder } = require('discord.js');
-
+const BlackList = require('../mongo/BlackList');
 const {imam, help, asim, ali, kerbela, commands} = require("../fun-commands/general")
 client.commands = new Collection();
 CommandsArray = [];
@@ -14,6 +14,12 @@ function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
 }
 
+async function isBlackListed(username) {
+	const arr = await BlackList.list();
+	return arr.some(function(el) {
+	  return el.username === username;
+	}); 
+}
 console.log(`Loading events...`);
 
 for (const file of events) {
@@ -56,7 +62,8 @@ client.on('messageCreate', async (message) => {
 			await message.reply(commands[i].value);
 		}
 	}
-	if (message.author.username === 'AwesomeKeskin' || message.author.username === 'Baran Ünal') {
+	var isAuthorBlackListed = await isBlackListed(message.author.username);
+	if (isAuthorBlackListed) {
 		var i = getRandomInt(asim.length);
 		await message.reply(asim[i].value);
 	}

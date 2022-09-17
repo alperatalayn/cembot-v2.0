@@ -47,10 +47,10 @@ module.exports = {
         });
 
         collector.on('collect', async (query) => {
-            if (query.content.toLowerCase() === 'cancel') return message.reply({ content: `Search cancelled ✅`, ephemeral: true }), collector.stop();
+            if (query.content.toLowerCase() === 'cancel') return message.reply({ content: `Durdum tamam ✅`, ephemeral: true }), collector.stop();
 
             const value = parseInt(query);
-            if (!value || value <= 0 || value > maxTracks.length) return message.reply({ content: `Invalid response, try a value between **1** and **${maxTracks.length}** or **cancel**... try again ? ❌`, ephemeral: true });
+            if (!value || value <= 0 || value > maxTracks.length) return message.reply({ content: ` **1** le **${maxTracks.length}** arasında bir sayı girmezsen gece rüyana girerim. Ya da kapat gidelim ❌`, ephemeral: true });
 
             collector.stop();
 
@@ -58,10 +58,10 @@ module.exports = {
                 if (!queue.connection) await queue.connect(message.member.voice.channel);
             } catch {
                 await player.deleteQueue(message.guildId);
-                return message.reply({ content: `I can't join the voice channel ${message.member}... try again ? ❌`, ephemeral: true });
+                return message.reply({ content: `Lanet olsun yezide!`, ephemeral: true });
             }
 
-            await message.reply(`Loading your search... 🎧`);
+            await message.reply(`Yoldayım geliyorum az daha dayan`);
 
             queue.addTrack(res.tracks[query.content - 1]);
 
@@ -69,7 +69,7 @@ module.exports = {
         });
 
         collector.on('end', (msg, reason) => {
-            if (reason === 'time') return message.reply({ content:`Search timed out ${message.member}... try again ? ❌`, ephemeral: true })
+            if (reason === 'time') return message.reply({ content:`Haydi Abbas vakit tamam`, ephemeral: true })
         });
     },
 };

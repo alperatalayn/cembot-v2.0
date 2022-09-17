@@ -24,19 +24,19 @@ module.exports = {
 
         const queue = player.getQueue(message.guildId);
 
-        if (!queue || !queue.playing) return message.reply({ content: `No music currently playing ${message.member}... try again ? ❌`, ephemeral: true });
-        if (!number) message.reply({ content: `You have to type a number to remove a song ${message.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.playing) return message.reply({ content: `Yok ki nasıl sileyim`, ephemeral: true });
+        if (!number) message.reply({ content: `Bana şarkının kaçıncı sırada olduğunu söyle sana kim olduğunu söyleyeyim`, ephemeral: true });
 
         if (number) {
 
             const index = number - 1
             const trackname = queue.tracks[index] ? queue.tracks[index].title : null
 
-            if (!trackname) return message.reply({ content: `This track dose not seem to exist ${message.member}...  try again ?❌`, ephemeral: true });   
+            if (!trackname) return message.reply({ content: `Emin misin, var mı böyle bişey?`, ephemeral: true });   
 
             queue.remove(index);
             
-            return message.reply({ content: `removed ${trackname} from the queue ✅` });
+            return message.reply({ content: `${trackname}'ı kaldırdım gitti` });
         }
 
 
