@@ -1,9 +1,9 @@
 module.exports = {
     app: {
-        token: 'ODgwNTU0NjQ2OTAzNjExNDEz.GUpGuy.DA0Zt2MYnzaPnieG4OmP1apgqMeYrE6JOXFP4I',
+        token: 'token',
         playing: 'cembot',
         global: false,
-        guild: '541425378854436864'
+        guild: 'guildId'
     },
 
     opt: {
@@ -26,6 +26,6 @@ module.exports = {
         prefix: '*'
     },
     mongo:{
-        url:"mongodb+srv://cembot-admin:5Q86Tejzs8JCDdK1@cembot-v2.b8xjiod.mongodb.net/?retryWrites=true&w=majority"
+        url:"mongoURL"
     }
 };
